@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classnames from "classnames";
 import Loading from "components/Loading";
-
+import Panel from "components/Panel";
 const data = [
   {
     id: 1,
