@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import Loading from "components/Loading";
 import Panel from "components/Panel";
+import axios from "axios";
+
 const data = [
   {
     id: 1,
@@ -35,7 +37,18 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    const focused = JSON.parse(localStorage.getItem("focused"));
+    Promise.all([
+      axios.get("/api/days"),
+      axios.get("/api/appointments"),
+      axios.get("/api/interviewers"),
+    ]).then(([days, appointments, interviewers]) => {
+      this.setState({
+        loading: false,
+        days: days.data,
+        appointments: appointments.data,
+        interviewers: interviewers.data,
+      });
+    });
 
     if (focused) {
       this.setState({ focused });
