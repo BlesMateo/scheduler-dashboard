@@ -55,6 +55,7 @@ class Dashboard extends Component {
         appointments: appointments.data,
         interviewers: interviewers.data,
       });
+      this.socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
     });
 
     if (focused) {
