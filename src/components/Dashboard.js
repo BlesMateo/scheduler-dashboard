@@ -69,6 +69,10 @@ class Dashboard extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.socket.close();
+  }
+
   selectPanel(id) {
     this.setState((previousState) => ({
       focused: previousState.focused !== null ? null : id,
