@@ -3,6 +3,7 @@ import classnames from "classnames";
 import Loading from "components/Loading";
 import Panel from "components/Panel";
 import axios from "axios";
+import { setInterview } from "helpers/reducers";
 
 import {
   getTotalInterviews,
